@@ -9,3 +9,4 @@ class CreateHTML:
         return htmlcode
     def writeToFile(self,codeTowrite):
         self.f.write(codeTowrite)
+
