@@ -1,4 +1,5 @@
 import logging
+
 class DBQuery_Extractor:
     # def __init__(self,fileName):
     #     self.fileName
