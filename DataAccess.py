@@ -1,11 +1,15 @@
 import logging
 import mysql.connector as MySQL
+import base64 as b
+import getpass
+#pwd=raw_input("Enter password for database:")
+p=getpass.getpass(prompt="Pwd  ")
 class DB_Connection:
     def __init__(self):
-        self.db=MySQL.connect(host="localhost", user="root", password="root", db="Student_monthly_report_v2")
+
+        #enc=b.b64encode(pwd)
+        self.db=MySQL.connect(host="localhost", user="root", password=p, db="Student_monthly_report_v2")
         self.crsr = self.db.cursor()
-
-
     def query(self,query):
         self.crsr.execute(query)
         return self.crsr.fetchall()
