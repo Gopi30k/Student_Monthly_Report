@@ -1,0 +1,19 @@
+2019-03-04 10:21:54,012 Query File Queries.sql read successfully
+2019-03-04 10:21:54,012 Query List Generated 
+2019-03-04 10:21:54,967 Database Connected
+2019-03-04 10:21:54,967 QUERY : select * from student  EXECUTED and Row Data Fetched 
+2019-03-04 10:21:54,967 QUERY : select * from student  EXECUTED and Column Name Fetched 
+2019-03-04 10:21:54,970 Dataframe created out of SQL Data
+2019-03-04 10:21:55,033 Month dataframe for January generated
+2019-03-04 10:21:55,099 Month dataframe for February generated
+2019-03-04 10:21:55,161 Month dataframe for March generated
+2019-03-04 10:21:55,223 Month dataframe for April generated
+2019-03-04 10:21:55,243 Month dataframe for May generated
+2019-03-04 10:21:55,269 Month dataframe for June generated
+2019-03-04 10:21:55,292 Month dataframe for July generated
+2019-03-04 10:21:55,319 Month dataframe for August generated
+2019-03-04 10:21:55,338 Month dataframe for September generated
+2019-03-04 10:21:55,364 Month dataframe for October generated
+2019-03-04 10:21:55,395 Month dataframe for November generated
+2019-03-04 10:21:55,423 Month dataframe for December generated
+2019-03-04 10:21:55,426 Html File Report : Student_monthly_report232.html created
