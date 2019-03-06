@@ -11,26 +11,26 @@ class SQLToDataFrames:
 
 
     def createDF(self,DB_sql_cmds):
+        for db_query in DB_sql_cmds:
+            try:
 
-        try:
-            for db_query in DB_sql_cmds:
-                self.Db_Data.append(DA.DB_Connection().query(db_query))
-                self.Db_Colnames.append(DA.DB_Connection().query_col_names(db_query))
+                    self.Db_Data.append(DA.DB_Connection().query(db_query))
+                    self.Db_Colnames.append(DA.DB_Connection().query_col_names(db_query))
 
 
-        except mysql.connector.Error as err:
-            if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-                logging.logger.info("Something is wrong with your user name or password")
-            elif err.errno == errorcode.ER_BAD_DB_ERROR:
-                logging.logger.info("Database does not exist")
+            except (mysql.connector.Error,Exception) as err:
+                if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+                    logging.logger.info("Something is wrong with your user name or password")
+                elif err.errno == errorcode.ER_BAD_DB_ERROR:
+                    logging.logger.info("Database does not exist")
 
-            elif Exception:
-                logging.logger.error("QUERY : %s  EXECUTED and Row Data not Fetched ", db_query)
-                logging.logger.error("QUERY : %s NOT EXECUTED and Column Name not Fetched", db_query)
-        else:
-                logging.logger.info("Database Connected")
-                logging.logger.info("QUERY : %s  EXECUTED and Row Data Fetched ", db_query)
-                logging.logger.info("QUERY : %s  EXECUTED and Column Name Fetched ", db_query)
+            except Exception as err:
+                    logging.logger.error("QUERY : {%s}  NOT EXECUTED and Row Data not Fetched  %s", db_query,err)
+                    logging.logger.error("QUERY : {%s} NOT EXECUTED and Column Name not Fetched", db_query)
+            else:
+                    logging.logger.info("Database Connected")
+                    logging.logger.info("QUERY : {%s}   EXECUTED and Row Data  Fetched ", db_query)
+                    logging.logger.info("QUERY : {%s}  EXECUTED and Column Name  Fetched", db_query)
 
         for itr in range(0,len(self.Db_Data)):
             self.Db_Sql_Tables.append(pd.DataFrame(self.Db_Data[itr],columns=self.Db_Colnames[itr]))
